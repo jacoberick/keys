@@ -1,4 +1,15 @@
+/* fonts */
+@import url("https://fonts.googleapis.com/css2?family=Lato&family=Zilla+Slab:wght@500&display=swap");
+
 /* ./src/index.css */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+/* base styles */
+@layer base {
+  a,
+  p {
+    @apply font-lato;
+  }
+}

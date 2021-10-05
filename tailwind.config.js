@@ -1,11 +1,18 @@
 module.exports = {
-  purge: ['./src/**/*.js'],
+  purge: ["./src/**/*.js"],
   darkMode: false, // or 'media' or 'class'
   theme: {
-    extend: {},
+    extend: {
+      fontFamily: {
+        zilla: ["'Zilla Slab'", "serif"],
+        lato: ["Lato", "sans-serif"],
+      },
+    },
   },
   variants: {
-    extend: {},
+    extend: {
+      fontStyle: ["hover"],
+    },
   },
   plugins: [],
-}
+};
