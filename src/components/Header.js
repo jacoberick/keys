@@ -5,7 +5,7 @@ const Header = () => {
   return (
     <div
       id="headerContainer"
-      className=" flex px-16 justify-between items-center max-w-4xl my-0 mx-auto py-3"
+      className=" flex px-16 justify-between items-center max-w-7xl my-0 mx-auto py-3"
     >
       <div id="logoContainer" className="flex items-center mr-4">
         <FontAwesomeIcon icon={faKey} className="text-2xl text-yellow-400" />

@@ -4,7 +4,7 @@ import FindKey from "./components/FindKey";
 
 function App() {
   return (
-    <div id="masterContainer" className="bg-gray-800 h-screen">
+    <div id="masterContainer" className="bg-gray-800 ">
       <Header />
       <FindKey />
     </div>
