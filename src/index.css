@@ -11,5 +11,6 @@
   a,
   p {
     @apply font-lato;
+    @apply text-yellow-400;
   }
 }

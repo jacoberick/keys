@@ -11,7 +11,7 @@ const Header = () => {
     >
       <div id="logoContainer" className="flex items-center mr-4">
         <FontAwesomeIcon icon={faKey} className="text-2xl text-yellow-400" />
-        <h1 className="font-zilla text-3xl ml-2">Keys</h1>
+        <h1 className="font-zilla text-white text-3xl ml-2">Keys</h1>
       </div>
       <hr className="border-yellow-400 border-2 rounded-full w-full" />
     </div>
