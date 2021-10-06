@@ -8,9 +8,7 @@
 
 /* base styles */
 @layer base {
-  a,
-  p {
+  button {
     @apply font-lato;
-    @apply text-yellow-400;
   }
 }

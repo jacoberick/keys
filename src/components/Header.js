@@ -1,8 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faKey } from "@fortawesome/free-solid-svg-icons";
 
-const linkClass = `hover:text-yellow-400 transition-all hover:underline mx-4`;
-
 const Header = () => {
   return (
     <div
