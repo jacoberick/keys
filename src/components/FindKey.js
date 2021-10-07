@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 
 // repeated styles
-const majorMinorTitles = `text-xl mb-4 text-white relative bottom-9 bg-gray-800 inline-block rounded py-1 px-2 font-lato`;
-const chordSection = `my-6 bg-gray-900 rounded-lg p-4 max-w-2xl`;
+const majorMinorTitles = `text-xl mb-4 text-white absolute -top-6 bg-gray-800 inline-block rounded py-1 px-2 font-lato`;
+const chordSection = `my-6 bg-gray-900 rounded-lg p-4 max-w-2xl relative`;
 const buttonsContainer = `flex flex-wrap justify-center`;
-const chordButton = `text-yellow-400 m-4 border-2  border-yellow-400 p-2 rounded-md w-32 hover:bg-yellow-400 transition-all hover:text-white`;
+const chordButton = `text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-md w-32 hover:bg-yellow-400 transition-all hover:text-white`;
 
 const FindKey = () => {
   //state
@@ -35,12 +35,16 @@ const FindKey = () => {
     let arrCopy = [...selectedChords];
     let selectIndex = arrCopy.indexOf(chordName);
 
-    selectIndex === -1
-      ? setSelectedChords([...arrCopy, chordName])
-      : setSelectedChords(arrCopy.filter((x) => x !== chordName));
+    if (selectIndex === -1) {
+      setSelectedChords([...arrCopy, chordName]);
+      el.target.classList.remove("text-yellow-400");
+      el.target.classList.add("bg-yellow-400", "text-white");
+    } else {
+      setSelectedChords(arrCopy.filter((x) => x !== chordName));
+      el.target.classList.remove("bg-yellow-400");
+      el.target.classList.add("text-yellow-400");
+    }
   };
-
-  console.log(selectedChords);
 
   //variables that store chord button elements
   const majorChordButtons = majorChords.map((c) => (
@@ -59,6 +63,15 @@ const FindKey = () => {
     <button onClick={toggleSelectedChord} key={c} className={chordButton}>
       {c}
     </button>
+  ));
+
+  const selectedChordButtons = selectedChords.map((c) => (
+    <p
+      key={c}
+      className="pointer-events-none bg-gray-900 text-white m-4 rounded-md transition-all hover:text-white"
+    >
+      {c}
+    </p>
   ));
 
   return (
@@ -89,10 +102,22 @@ const FindKey = () => {
       </div>
       {/* selected chords */}
       <div id="right" className="ml-4 w-1/2">
-        <section className="my-6 bg-gray-200 rounded-lg p-4 max-w-2xl flex flex-col items-start">
+        <section className={`${chordSection} flex flex-col`}>
           <p className={`${majorMinorTitles}`}>Selected Chords</p>
-          <div id="minorChordBank" className={buttonsContainer}></div>
-          <button className="self-center border-gray-800 border-2 rounded p-2 hover:bg-gray-800 hover:text-white transition-all">
+          <div id="minorChordBank" className={`${buttonsContainer} h-10`}>
+            {selectedChords.length ? (
+              selectedChordButtons
+            ) : (
+              <p className="mt-2 text-gray-500">No selected chords.</p>
+            )}
+          </div>
+          <button
+            className={`${
+              selectedChords.length
+                ? "border-gray-400 text-gray-400 border-2 rounded p-2  transition-all self-end"
+                : "hidden"
+            } hover:border-yellow-400 hover:text-yellow-400`}
+          >
             Find Key
           </button>
         </section>
