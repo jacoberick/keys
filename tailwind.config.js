@@ -11,7 +11,7 @@ module.exports = {
   },
   variants: {
     extend: {
-      fontStyle: ["hover"],
+      scale: ["active"],
     },
   },
   plugins: [],
