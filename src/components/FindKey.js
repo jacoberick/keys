@@ -9,6 +9,9 @@ const chordButton = `text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-
 const FindKey = () => {
   //state
   const [selectedChords, setSelectedChords] = useState([]);
+  const [foundKeys, setFoundKeys] = useState([]);
+
+  const returnNada = () => null;
 
   //chord arrays
   const baseChords = [
@@ -87,6 +90,16 @@ const FindKey = () => {
     keys.push([baseChords[i] + " Major", computeMajorKeys(i)]);
     keys.push([baseChords[i] + " Minor", computeMinorKeys(i)]);
   }
+
+  //compares values in chordSelection to the musical keys in the key array
+  const findKeys = () => {
+    let potentialKeys = [];
+    for (let i = 0; i < keys.length; i++) {
+      let newKey = selectedChords.every((x) => keys[i][1].indexOf(x) !== -1);
+      newKey ? potentialKeys.push(keys[i][0]) : returnNada();
+    }
+    setFoundKeys(potentialKeys);
+  };
 
   //toggles chord to be selected or removed from selected
   const toggleSelectedChord = (el) => {
@@ -171,6 +184,7 @@ const FindKey = () => {
             )}
           </div>
           <button
+            onClick={findKeys}
             className={`${
               selectedChords.length
                 ? "border-gray-400 text-gray-400 border-2 rounded p-2 transition-all self-end mt-4"
