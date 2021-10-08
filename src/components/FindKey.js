@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 // repeated styles
-const majorMinorTitles = `text-xl mb-4 text-white absolute -top-6 bg-gray-800 inline-block rounded py-1 px-2 font-lato`;
+const majorMinorTitles = `text-xl mb-4 text-white absolute -top-6 bg-gray-800 rounded py-1 px-2 font-lato`;
 const chordSection = `my-12 bg-gray-900 rounded-lg p-4 max-w-2xl relative`;
 const buttonsContainer = `flex flex-wrap justify-center`;
 const chordButton = `text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-md w-32 transition-all`;
@@ -110,7 +110,7 @@ const FindKey = () => {
     if (selectIndex === -1) {
       setSelectedChords([...arrCopy, chordName]);
       el.target.classList.remove("text-yellow-400");
-      el.target.classList.add("bg-yellow-400", "text-white");
+      el.target.classList.add("bg-yellow-400", "text-white", "cb-selector");
     } else {
       setSelectedChords(arrCopy.filter((x) => x !== chordName));
       el.target.classList.remove("bg-yellow-400");
@@ -118,21 +118,31 @@ const FindKey = () => {
     }
   };
 
+  //resets selected chords
+  const resetSelected = () => {
+    let chordButtons = document.querySelectorAll(".cb-selector");
+    for (const button of chordButtons) {
+      button.classList.remove("bg-yellow-400");
+      button.classList.add("text-yellow-400");
+    }
+    setSelectedChords([]);
+  };
+
   //variables that store chord button elements
   const majorChordButtons = majorChords.map((c) => (
-    <button onClick={toggleSelectedChord} key={c} className={chordButton}>
+    <button onClick={toggleSelectedChord} key={c} className={`${chordButton}`}>
       {c}
     </button>
   ));
 
   const minorChordButtons = minorChords.map((c) => (
-    <button onClick={toggleSelectedChord} key={c} className={chordButton}>
+    <button onClick={toggleSelectedChord} key={c} className={`${chordButton}`}>
       {c}
     </button>
   ));
 
   const dimChordButtons = dimChords.map((c) => (
-    <button onClick={toggleSelectedChord} key={c} className={chordButton}>
+    <button onClick={toggleSelectedChord} key={c} className={`${chordButton}`}>
       {c}
     </button>
   ));
@@ -174,7 +184,7 @@ const FindKey = () => {
       </div>
       {/* selected chords */}
       <div id="right" className="ml-4 w-1/2">
-        <section className={`${chordSection} flex flex-col`}>
+        <section className={`${chordSection}`}>
           <p className={`${majorMinorTitles}`}>Selected Chords</p>
           <div id="minorChordBank" className={`${buttonsContainer}`}>
             {selectedChords.length ? (
@@ -183,16 +193,28 @@ const FindKey = () => {
               <p className=" text-gray-500">select some chords, my friend</p>
             )}
           </div>
-          <button
-            onClick={findKeys}
-            className={`${
-              selectedChords.length
-                ? "border-gray-400 text-gray-400 border-2 rounded p-2 transition-all self-end mt-4"
-                : "hidden"
-            } hover:border-yellow-400 hover:text-yellow-400`}
-          >
-            Find Key
-          </button>
+          <div id="selectedSectionButtons" className="flex justify-between">
+            <button
+              onClick={findKeys}
+              className={`${
+                selectedChords.length
+                  ? "border-gray-400 text-gray-400 border-2 rounded p-2 transition-all self-end mt-4"
+                  : "hidden"
+              } hover:border-green-400 hover:text-green-400`}
+            >
+              Find Key
+            </button>
+            <button
+              onClick={resetSelected}
+              className={`${
+                selectedChords.length
+                  ? "border-gray-400 text-gray-400 border-2 rounded p-2 transition-all self-start mt-4"
+                  : "hidden"
+              } hover:border-red-500 hover:text-red-500`}
+            >
+              Reset
+            </button>
+          </div>
         </section>
       </div>
     </div>
