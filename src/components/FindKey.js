@@ -9,6 +9,7 @@ const FindKey = () => {
   //state
   const [selectedChords, setSelectedChords] = useState([]);
   const [foundKeys, setFoundKeys] = useState([]);
+  const [selectedChordGrp, setSelectedChordGrp] = useState();
 
   const returnNada = () => null;
 
@@ -108,23 +109,9 @@ const FindKey = () => {
 
     if (selectIndex === -1) {
       setSelectedChords([...arrCopy, chordName]);
-      el.target.classList.remove("text-yellow-400");
-      el.target.classList.add("bg-yellow-400", "text-white", "cb-selector");
     } else {
       setSelectedChords(arrCopy.filter((x) => x !== chordName));
-      el.target.classList.remove("bg-yellow-400");
-      el.target.classList.add("text-yellow-400");
     }
-  };
-
-  //resets selected chords
-  const resetSelected = () => {
-    let chordButtons = document.querySelectorAll(".cb-selector");
-    for (const button of chordButtons) {
-      button.classList.remove("bg-yellow-400");
-      button.classList.add("text-yellow-400");
-    }
-    setSelectedChords([]);
   };
 
   //array that store chord button elements
@@ -150,6 +137,29 @@ const FindKey = () => {
     </p>
   ));
 
+  //switch case to determine which chord group to render
+  let renderChordGroup = () => {
+    switch (selectedChordGrp) {
+      case "Major Chords":
+        return buttonsCode[0];
+        break;
+      case "Minor Chords":
+        return buttonsCode[1];
+        break;
+      case "Diminished Chords":
+        return buttonsCode[2];
+        break;
+      default:
+        return buttonsCode[0];
+        break;
+    }
+  };
+
+  //updates selectedChordGroup state on click of chordSwap buttons
+  let setSelectedChordState = (el) => {
+    setSelectedChordGrp(el.target.innerHTML);
+  };
+
   return (
     <div
       id="findKeyContainer"
@@ -158,7 +168,7 @@ const FindKey = () => {
       {/* selected chords */}
       <section className={`${chordSection} w-full`}>
         <p className="">Selected Chords</p>
-        <div id="selectedChords" className={`${buttonsContainer}`}>
+        <div id="selectedChords" className={`${buttonsContainer} py-5`}>
           {selectedChords.length ? (
             selectedChordButtons
           ) : (
@@ -177,7 +187,7 @@ const FindKey = () => {
             Find Key
           </button>
           <button
-            onClick={resetSelected}
+            onClick={() => setSelectedChords([])}
             className={`${
               selectedChords.length
                 ? "border-gray-400 text-gray-400 border-2 rounded p-2 transition-all self-start mt-4"
@@ -191,9 +201,24 @@ const FindKey = () => {
 
       {/* chords for selection */}
       <section id="majorSection" className={chordSection}>
-        <p className="">Major Chords</p>
+        <div
+          id="chordSwapContainer"
+          className="flex justify-between items-center text-white mb-4"
+        >
+          <button id="chordSwapButton" onClick={setSelectedChordState}>
+            Major Chords
+          </button>
+          <hr className="border-2 w-32 rounded-3xl border-gray-600" />
+          <button id="chordSwapButton" onClick={setSelectedChordState}>
+            Minor Chords
+          </button>
+          <hr className="border-2 w-32 rounded-3xl border-gray-600" />
+          <button id="chordSwapButton" onClick={setSelectedChordState}>
+            Diminished Chords
+          </button>
+        </div>
         <div id="majorChordBank" className={buttonsContainer}>
-          {buttonsCode[0]}
+          {renderChordGroup()}
         </div>
       </section>
     </div>
