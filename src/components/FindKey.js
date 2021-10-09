@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // repeated styles
 const chordSection = `max-w-2xl my-6`;
@@ -9,7 +9,7 @@ const FindKey = () => {
   //state
   const [selectedChords, setSelectedChords] = useState([]);
   const [foundKeys, setFoundKeys] = useState([]);
-  const [selectedChordGrp, setSelectedChordGrp] = useState();
+  const [selectedChordGrp, setSelectedChordGrp] = useState("Major Chords");
 
   const returnNada = () => null;
 
@@ -112,6 +112,16 @@ const FindKey = () => {
     });
   };
 
+  //updates chord group button style
+  let chordSwapButtons = document.getElementsByClassName("chord-swap-button");
+  [...chordSwapButtons].forEach((x) => {
+    if (selectedChordGrp.indexOf(x.innerHTML) !== -1) {
+      x.classList.add("text-yellow-400", "italic");
+    } else {
+      x.classList.remove("text-yellow-400", "italic");
+    }
+  });
+
   //toggles chord to be selected or removed from selected
   const toggleSelectedChord = (el) => {
     let chordName = el.target.innerHTML;
@@ -185,9 +195,8 @@ const FindKey = () => {
   };
 
   //updates selectedChordGroup state on click of chordSwap buttons
-  let setSelectedChordState = (el) => {
+  const setSelectedGroup = (el) => {
     setSelectedChordGrp(el.target.innerHTML);
-
     setTimeout(() => {
       renderActiveClasses();
     }, 5);
@@ -238,15 +247,18 @@ const FindKey = () => {
           id="chordSwapContainer"
           className="flex justify-between items-center text-white mb-4"
         >
-          <button id="chordSwapButton" onClick={setSelectedChordState}>
+          <button
+            className="chord-swap-button text-yellow-400"
+            onClick={setSelectedGroup}
+          >
             Major Chords
           </button>
           <hr className="border-2 w-32 rounded-3xl border-gray-600" />
-          <button id="chordSwapButton" onClick={setSelectedChordState}>
+          <button className="chord-swap-button" onClick={setSelectedGroup}>
             Minor Chords
           </button>
           <hr className="border-2 w-32 rounded-3xl border-gray-600" />
-          <button id="chordSwapButton" onClick={setSelectedChordState}>
+          <button className="chord-swap-button" onClick={setSelectedGroup}>
             Diminished Chords
           </button>
         </div>
