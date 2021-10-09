@@ -101,6 +101,17 @@ const FindKey = () => {
     setFoundKeys(potentialKeys);
   };
 
+  // adds and removes active class to selected buttons
+  let renderActiveClasses = () => {
+    let buttons = document.getElementsByClassName("cb-selector");
+    [...buttons].forEach((x) => {
+      if (selectedChords.indexOf(x.innerHTML) !== -1) {
+        x.classList.remove("text-yellow-400");
+        x.classList.add("bg-yellow-400", "text-white");
+      }
+    });
+  };
+
   //toggles chord to be selected or removed from selected
   const toggleSelectedChord = (el) => {
     let chordName = el.target.innerHTML;
@@ -109,9 +120,23 @@ const FindKey = () => {
 
     if (selectIndex === -1) {
       setSelectedChords([...arrCopy, chordName]);
+      el.target.classList.remove("text-yellow-400");
+      el.target.classList.add("bg-yellow-400", "text-white");
     } else {
       setSelectedChords(arrCopy.filter((x) => x !== chordName));
+      el.target.classList.remove("bg-yellow-400");
+      el.target.classList.add("text-yellow-400");
     }
+  };
+
+  // resets selected chords and active classes
+  const resetSelected = () => {
+    let chordButtons = document.querySelectorAll(".cb-selector");
+    for (const button of chordButtons) {
+      button.classList.remove("bg-yellow-400");
+      button.classList.add("text-yellow-400");
+    }
+    setSelectedChords([]);
   };
 
   //array that store chord button elements
@@ -120,7 +145,11 @@ const FindKey = () => {
 
   for (let i = 0; i < buttonsArray.length; i++) {
     let code = buttonsArray[i].map((c) => (
-      <button onClick={toggleSelectedChord} key={c} className={chordButton}>
+      <button
+        onClick={toggleSelectedChord}
+        key={c}
+        className={`${chordButton} cb-selector`}
+      >
         {c}
       </button>
     ));
@@ -158,6 +187,10 @@ const FindKey = () => {
   //updates selectedChordGroup state on click of chordSwap buttons
   let setSelectedChordState = (el) => {
     setSelectedChordGrp(el.target.innerHTML);
+
+    setTimeout(() => {
+      renderActiveClasses();
+    }, 5);
   };
 
   return (
@@ -187,7 +220,7 @@ const FindKey = () => {
             Find Key
           </button>
           <button
-            onClick={() => setSelectedChords([])}
+            onClick={resetSelected}
             className={`${
               selectedChords.length
                 ? "border-gray-400 text-gray-400 border-2 rounded p-2 transition-all self-start mt-4"
