@@ -205,7 +205,7 @@ const FindKey = () => {
   return (
     <div
       id="findKeyContainer"
-      className="flex flex-col items-center x-16 max-w-7xl"
+      className="flex flex-col max-w-7xl items-center mx-auto"
     >
       {/* selected chords */}
       <section className={`${chordSection} w-full`}>
@@ -248,7 +248,7 @@ const FindKey = () => {
           className="flex justify-between items-center text-white mb-4"
         >
           <button
-            className="chord-swap-button text-yellow-400"
+            className="chord-swap-button text-yellow-400 italic"
             onClick={setSelectedGroup}
           >
             Major Chords
