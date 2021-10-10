@@ -7,6 +7,9 @@ module.exports = {
         zilla: ["'Zilla Slab'", "serif"],
         lato: ["Lato", "sans-serif"],
       },
+      minHeight: {
+        40: "10rem",
+      },
     },
   },
   variants: {

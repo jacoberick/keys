@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 
 // repeated styles
-const chordSection = `max-w-2xl my-6`;
+const chordSection = `max-w-2xl mt-6 mb-12`;
 const buttonsContainer = `p-4 rounded-lg bg-gray-900 flex flex-wrap justify-center`;
-const chordButton = `transform hover:scale-110 active:scale-75 text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-md w-32 transition-all`;
+const chordButton = `transform hover:scale-110 active:scale-95 text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-md w-32 transition-all`;
 
 const FindKey = () => {
   //state
@@ -209,22 +209,27 @@ const FindKey = () => {
     >
       {/* selected chords */}
       <section className={`${chordSection} w-full`}>
-        <p className="">Selected Chords</p>
-        <div id="selectedChords" className={`${buttonsContainer} py-5`}>
+        <p className="text-white mb-4">Selected Chords</p>
+        <div
+          id="selectedChords"
+          className={`${buttonsContainer} py-5 min-h-40`}
+        >
           {selectedChords.length ? (
             selectedChordButtons
           ) : (
-            <p className=" text-gray-500">Select some chords, my friend.</p>
+            <p className="mt-11 text-gray-500">
+              Select some chords, my friend.
+            </p>
           )}
         </div>
-        <div id="selectedSectionButtons" className="flex justify-between">
+        <div id="selectedSectionButtons" className="flex justify-center">
           <button
             onClick={findKeys}
             className={`${
               selectedChords.length
-                ? "border-gray-400 text-gray-400 border-2 rounded p-2 transition-all self-end mt-4"
-                : "hidden"
-            } hover:border-green-400 hover:text-green-400`}
+                ? "hover:border-green-400 hover:text-green-400 border-gray-400 text-gray-400 "
+                : "border-gray-600 text-gray-600 pointer-events-none"
+            } border-2 rounded p-2 transition-all self-end mt-4 mr-4 w-24`}
           >
             Find Key
           </button>
@@ -232,9 +237,9 @@ const FindKey = () => {
             onClick={resetSelected}
             className={`${
               selectedChords.length
-                ? "border-gray-400 text-gray-400 border-2 rounded p-2 transition-all self-start mt-4"
-                : "hidden"
-            } hover:border-red-500 hover:text-red-500`}
+                ? "hover:border-red-500 hover:text-red-500 border-gray-400 text-gray-400 "
+                : "border-gray-600 text-gray-600 pointer-events-none"
+            } border-2 rounded p-2 transition-all self-end mt-4 ml-4 w-24`}
           >
             Reset
           </button>
@@ -242,7 +247,7 @@ const FindKey = () => {
       </section>
 
       {/* chords for selection */}
-      <section id="majorSection" className={chordSection}>
+      <section id="chordChoices" className={chordSection}>
         <div
           id="chordSwapContainer"
           className="flex justify-between items-center text-white mb-4"
@@ -266,6 +271,9 @@ const FindKey = () => {
           {renderChordGroup()}
         </div>
       </section>
+
+      {/* found key section */}
+      <section id="foundKeySection"></section>
     </div>
   );
 };
