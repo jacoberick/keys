@@ -160,24 +160,6 @@ const FindKey = () => {
     </p>
   ));
 
-  //switch case to determine which chord group to render
-  let renderChordGroup = () => {
-    switch (selectedChordGrp) {
-      case "Major Chords":
-        return buttonsCode[0];
-        break;
-      case "Minor Chords":
-        return buttonsCode[1];
-        break;
-      case "Diminished Chords":
-        return buttonsCode[2];
-        break;
-      default:
-        return buttonsCode[0];
-        break;
-    }
-  };
-
   //updates selectedChordGroup state on click of chordSwap buttons
   const setSelectedGroup = (el) => {
     setSelectedChordGrp(el.target.innerHTML);
@@ -186,8 +168,22 @@ const FindKey = () => {
     }, 5);
   };
 
+  //switch case to determine which chord group to render
+  let renderChordGroup = () => {
+    switch (selectedChordGrp) {
+      case "Major Chords":
+        return buttonsCode[0];
+      case "Minor Chords":
+        return buttonsCode[1];
+      case "Diminished Chords":
+        return buttonsCode[2];
+      default:
+        return buttonsCode[0];
+    }
+  };
+
   //variable that stores mapped p tags for foundKeys
-  // let foundKeyTags = foundKeys.map((x) => <p>{x}</p>);
+  let foundKeyTags = foundKeys.map((x) => <p key={x}>{x}</p>);
 
   return (
     <div id="findKeyContainer" className="flex flex-col max-w-7xl items-center mx-auto">
@@ -226,7 +222,7 @@ const FindKey = () => {
             onClick={findKeys}
             className={`${
               selectedChords.length
-                ? "hover:border-green-400 hover:text-green-400 border-gray-400 text-gray-400 "
+                ? "border-green-400 text-green-400 hover:shadow-greenGlow"
                 : "border-gray-600 text-gray-600 pointer-events-none"
             } border-2 rounded p-2 transition-all self-end mt-4 mr-4 w-24`}
           >
@@ -236,7 +232,7 @@ const FindKey = () => {
             onClick={resetSelected}
             className={`${
               selectedChords.length
-                ? "hover:border-red-500 hover:text-red-500 border-gray-400 text-gray-400 "
+                ? "border-red-500 text-red-500 hover:shadow-redGlow"
                 : "border-gray-600 text-gray-600 pointer-events-none"
             } border-2 rounded p-2 transition-all self-end mt-4 ml-4 w-24`}
           >
@@ -249,7 +245,7 @@ const FindKey = () => {
       <section id="foundKeySection" className="w-full max-w-2xl mb-20">
         <p className="text-white mb-4">Compatible Keys</p>
         <hr className="border-gray-600 border-2 rounded-full" />
-        <div id="displayCompatKeysContainer"></div>
+        <div id="displayCompatKeysContainer">{foundKeyTags}</div>
       </section>
     </div>
   );
