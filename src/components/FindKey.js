@@ -17,7 +17,7 @@ const FindKey = () => {
   const baseChords = ["A", "A#/Bb", "B", "C", "C#/Db", "D", "D#/Eb", "E", "F", "F#/Gb", "G", "G#/Ab"];
   const majorChords = baseChords.map((x) => x + " Major");
   const minorChords = baseChords.map((x) => x + " Minor");
-  const dimChords = baseChords.map((x) => x + " Diminished");
+  const dimChords = baseChords.map((x) => x + " Dim");
 
   const basesForKeys = [
     "A",
@@ -54,14 +54,14 @@ const FindKey = () => {
     let theFour = basesForKeys[startChordIndex + 5] + " Major";
     let theFive = basesForKeys[startChordIndex + 7] + " Major";
     let theSix = basesForKeys[startChordIndex + 9] + " Minor";
-    let theSeven = basesForKeys[startChordIndex + 11] + " Diminished";
+    let theSeven = basesForKeys[startChordIndex + 11] + " Dim";
     return [theOne, theTwo, theThree, theFour, theFive, theSix, theSeven];
   };
 
   //function to compute all minor keys given index of first note
   const computeMinorKeys = (startChordIndex) => {
     let theOne = basesForKeys[startChordIndex] + " Minor";
-    let theTwo = basesForKeys[startChordIndex + 2] + " Diminished";
+    let theTwo = basesForKeys[startChordIndex + 2] + " Dim";
     let theThree = basesForKeys[startChordIndex + 3] + " Major";
     let theFour = basesForKeys[startChordIndex + 5] + " Minor";
     let theFive = basesForKeys[startChordIndex + 7] + " Minor";
@@ -183,7 +183,11 @@ const FindKey = () => {
   };
 
   //variable that stores mapped p tags for foundKeys
-  let foundKeyTags = foundKeys.map((x) => <p key={x}>{x}</p>);
+  let foundKeyTags = foundKeys.map((x) => (
+    <p className="inline-block mx-2 text-white" key={x}>
+      {x}
+    </p>
+  ));
 
   return (
     <div id="findKeyContainer" className="flex flex-col max-w-7xl items-center mx-auto">
@@ -242,10 +246,16 @@ const FindKey = () => {
       </section>
 
       {/* found key section */}
-      <section id="foundKeySection" className="w-full max-w-2xl mb-20">
+      <section id="foundKeySection" className="w-full max-w-2xl mb-32">
         <p className="text-white mb-4">Compatible Keys</p>
         <hr className="border-gray-600 border-2 rounded-full" />
-        <div id="displayCompatKeysContainer">{foundKeyTags}</div>
+        <div id="displayCompatKeysContainer" className="mt-4 text-center">
+          {foundKeyTags.length ? (
+            foundKeyTags
+          ) : (
+            <p className="text-gray-400">Press 'Find Keys' to display compatible keys.</p>
+          )}
+        </div>
       </section>
     </div>
   );
