@@ -13,3 +13,7 @@
     @apply font-lato;
   }
 }
+
+html {
+  scroll-behavior: smooth;
+}

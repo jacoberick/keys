@@ -15,6 +15,9 @@ module.exports = {
       minHeight: {
         40: "10rem",
       },
+      height: {
+        screenMinusHeader: "calc(100vh - 60px)",
+      },
     },
   },
   variants: {
