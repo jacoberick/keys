@@ -206,7 +206,7 @@ const FindKey = () => {
             Diminished Chords
           </button>
         </div>
-        <div id="majorChordBank" className={buttonsContainer}>
+        <div id="chordBank" className={buttonsContainer}>
           {renderChordGroup()}
         </div>
       </section>
