@@ -91,17 +91,6 @@ const FindKey = () => {
     setFoundKeys(potentialKeys);
   };
 
-  // adds and removes active class to selected buttons
-  let renderActiveClasses = () => {
-    let buttons = document.getElementsByClassName("cb-selector");
-    [...buttons].forEach((x) => {
-      if (selectedChords.indexOf(x.innerHTML) !== -1) {
-        x.classList.remove("text-yellow-400");
-        x.classList.add("bg-yellow-400", "text-white");
-      }
-    });
-  };
-
   //updates chord group button style
   let chordSwapButtons = document.getElementsByClassName("chord-swap-button");
   [...chordSwapButtons].forEach((x) => {
@@ -163,9 +152,6 @@ const FindKey = () => {
   //updates selectedChordGroup state on click of chordSwap buttons
   const setSelectedGroup = (el) => {
     setSelectedChordGrp(el.target.innerHTML);
-    setTimeout(() => {
-      renderActiveClasses();
-    }, 5);
   };
 
   //switch case to determine which chord group to render
