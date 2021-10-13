@@ -18,6 +18,15 @@ module.exports = {
       height: {
         screenMinusHeader: "calc(100vh - 60px)",
       },
+      keyframes: {
+        highlight: {
+          "0%, 100%": { color: "#fefefe" },
+          "10%, 90%": { color: "#FBBF24" },
+        },
+      },
+      animation: {
+        highlight: "highlight 3s infinite",
+      },
     },
   },
   variants: {

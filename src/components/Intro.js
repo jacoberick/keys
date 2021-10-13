@@ -1,7 +1,8 @@
 const directionStyle = `mb-4 text-white text-center`;
-
 const chordButtonBank = ["C Major", "A Minor", "B Dim"];
 const chordButton = `transform hover:scale-110 active:scale-95 text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-md w-32 transition-all`;
+
+const switchType = () => {};
 
 const Intro = () => {
   return (
@@ -18,11 +19,11 @@ const Intro = () => {
               id="chordSwapContainer"
               className="flex items-center shadow-introFlow bg-gray-700 p-5 rounded text-white"
             >
-              <p className="chord-swap-button mx-4">Major Chords</p>
+              <p className="mx-4">Major Chords</p>
               <hr className="border-2 w-20 rounded-3xl border-gray-600" />
-              <p className="chord-swap-button mx-4">Minor Chords</p>
+              <p className="mx-4">Minor Chords</p>
               <hr className="border-2 w-20 rounded-3xl border-gray-600" />
-              <p className="chord-swap-button mx-4">Diminished Chords</p>
+              <p className="mx-4">Diminished Chords</p>
             </div>
             <p className={`${directionStyle} mt-8`}>Pick your chords.</p>
             <div className="flex justify-center shadow-introFlow bg-gray-700 rounded">
