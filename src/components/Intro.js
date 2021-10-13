@@ -21,6 +21,19 @@ const Intro = () => {
     });
   }, [selectedCrdTyp]);
 
+  //handle chord buttons
+  const clickityClackCB = (e) => {
+    let elem = e.target.classList;
+    let activeClass = ["bg-yellow-400", "text-white", "im-active"];
+    if (elem.contains("im-active")) {
+      elem.remove(...activeClass);
+      elem.add("text-yellow-400");
+    } else {
+      elem.remove("text-yellow-400");
+      elem.add(...activeClass);
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto px-16 h-screenMinusHeader">
       <div id="inner" className="flex flex-col h-full justify-evenly">
@@ -50,7 +63,7 @@ const Intro = () => {
             <p className={`${directionStyle} mt-8`}>Pick your chords.</p>
             <div className="flex justify-center shadow-introFlow bg-gray-700 rounded">
               {chordButtonBank.map((x) => (
-                <button key={x} className={chordButton}>
+                <button onClick={clickityClackCB} key={x} className={chordButton}>
                   {x}
                 </button>
               ))}
