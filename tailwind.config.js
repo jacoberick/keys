@@ -7,6 +7,11 @@ module.exports = {
       greenGlow: "0px 2.5px 15px rgb(52, 211, 113, .5)",
       introFlow: "-5px 5px 10px 5px rgb(0, 0, 0, .2)",
     },
+    screens: {
+      bOne: { max: "773px" },
+      bTwo: { max: "603px" },
+      bThree: { max: "567px" },
+    },
     extend: {
       fontFamily: {
         zilla: ["'Zilla Slab'", "serif"],
