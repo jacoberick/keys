@@ -2,6 +2,7 @@ import "./App.css";
 import Header from "./components/Header";
 import Intro from "./components/Intro";
 import FindKey from "./components/FindKey";
+import Footer from "./components/Footer";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Header />
       <Intro />
       <FindKey />
+      <Footer />
     </div>
   );
 }
