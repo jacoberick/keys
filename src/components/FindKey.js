@@ -3,7 +3,7 @@ import React, { useState } from "react";
 // repeated styles
 const chordSection = `max-w-2xl mt-6 mb-8`;
 const buttonsContainer = `p-4 rounded-lg bg-gray-900 flex flex-wrap justify-center`;
-const chordButton = `transform hover:scale-110 active:scale-95 text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-md w-32 transition-all`;
+const chordButton = `transform hover:scale-110 active:scale-95 text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-md w-32 transition-all bTwo:w-20`;
 
 const FindKey = () => {
   //state
@@ -176,7 +176,10 @@ const FindKey = () => {
   ));
 
   return (
-    <div id="findKeyContainer" className="flex flex-col max-w-7xl items-center mx-auto">
+    <div
+      id="findKeyContainer"
+      className="flex flex-col max-w-7xl items-center mx-auto bOne:mx-16 bTwo:mx-8 bTwo:text-sm"
+    >
       {/* chords for selection */}
       <section id="chordChoices" className={chordSection}>
         <div id="chordSwapContainer" className="flex justify-between items-center text-white mb-4">
