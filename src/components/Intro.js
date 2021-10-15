@@ -35,33 +35,33 @@ const Intro = () => {
   };
 
   return (
-    <div className="max-w-7xl mx-auto px-16 h-screenMinusHeader">
+    <div className="max-w-7xl mx-auto px-16 h-screenMinusHeader bFive:h-auto bFive:px-6">
       <div id="inner" className="flex flex-col h-full justify-evenly">
-        <p className="font-zilla text-white text-5xl bOne:text-center bOne:text-4xl bTwo:text-3xl">
+        <p className="font-zilla text-white text-5xl bOne:text-center bOne:text-4xl bTwo:text-3xl bFive:mb-8 bFive:mt-4">
           Unlock your music... with <span className="text-yellow-400">Keys</span>!
         </p>
-        <div id="center" className="self-center">
+        <div id="center" className="self-center bFive:self-auto">
           <p className="mb-4 text-3xl font-zilla text-yellow-400 bOne:text-2xl bTwo:text-xl">How to use...</p>
           <div className="">
             <p className={directionStyle}>Choose between chord types.</p>
             <div
               id="chordSwapContainer"
-              className="flex items-center shadow-introFlow bg-gray-700 p-5 rounded text-white bTwo:p-3 bTwo:text-sm"
+              className="flex items-center shadow-introFlow bg-gray-700 p-5 rounded text-white bTwo:p-3 bTwo:text-sm bFive:flex-col"
             >
               <button onClick={updateChordTypeState} className="chord-type mx-4">
                 Major Chords
               </button>
-              <hr className="border-2 w-20 rounded-3xl border-gray-600 bThree:w-5" />
-              <button onClick={updateChordTypeState} className="chord-type mx-4">
+              <hr className="border-2 w-20 rounded-3xl border-gray-600 bThree:w-5 bFive:hidden" />
+              <button onClick={updateChordTypeState} className="chord-type mx-4 bFive:my-4">
                 Minor Chords
               </button>
-              <hr className="border-2 w-20 rounded-3xl border-gray-600 bThree:w-5" />
+              <hr className="border-2 w-20 rounded-3xl border-gray-600 bThree:w-5 bFive:hidden" />
               <button onClick={updateChordTypeState} className="chord-type mx-4">
                 Diminished Chords
               </button>
             </div>
             <p className={`${directionStyle} mt-8`}>Pick your chords.</p>
-            <div className="flex justify-center shadow-introFlow bg-gray-700 rounded">
+            <div className="flex justify-center shadow-introFlow bg-gray-700 rounded bFive:flex-col bFive:items-center">
               {chordButtonBank.map((x) => (
                 <button onClick={clickityClackCB} key={x} className={chordButton}>
                   {x}
@@ -77,7 +77,10 @@ const Intro = () => {
           </div>
         </div>
         <div className="flex justify-end bOne:justify-center">
-          <a className="font-zilla text-white text-3xl hover:underline bOne:text-2xl" href="#findKeyContainer">
+          <a
+            className="font-zilla text-white text-3xl hover:underline bOne:text-2xl bTwo:text-xl bThree:text-lg bFive:mt-8"
+            href="#findKeyContainer"
+          >
             Click here to get started.
           </a>
         </div>

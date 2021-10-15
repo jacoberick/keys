@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 
 // repeated styles
-const chordSection = `max-w-2xl mt-6 mb-8`;
+const chordSection = `max-w-2xl my-8`;
 const buttonsContainer = `p-4 rounded-lg bg-gray-900 flex flex-wrap justify-center`;
-const chordButton = `transform hover:scale-110 active:scale-95 text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-md w-32 transition-all bTwo:w-20`;
+const chordButton = `transform hover:scale-110 active:scale-95 text-yellow-400 m-4 border-2 border-yellow-400 p-2 rounded-md w-32 transition-all bTwo:w-20 bFour:text-xs bFour:m-3`;
 
 const FindKey = () => {
   //state
@@ -182,16 +182,19 @@ const FindKey = () => {
     >
       {/* chords for selection */}
       <section id="chordChoices" className={chordSection}>
-        <div id="chordSwapContainer" className="flex justify-between items-center text-white mb-4">
-          <button className="chord-swap-button text-yellow-400 italic" onClick={setSelectedGroup}>
+        <div
+          id="chordSwapContainer"
+          className="flex justify-between items-center text-white mb-4 whitespace-nowrap bFour:whitespace-normal"
+        >
+          <button className="chord-swap-button text-yellow-400 italic mr-4" onClick={setSelectedGroup}>
             Major Chords
           </button>
-          <hr className="border-2 w-32 rounded-3xl border-gray-600" />
-          <button className="chord-swap-button" onClick={setSelectedGroup}>
+          <hr className="border-2 w-full rounded-3xl border-gray-600" />
+          <button className="chord-swap-button mx-4" onClick={setSelectedGroup}>
             Minor Chords
           </button>
-          <hr className="border-2 w-32 rounded-3xl border-gray-600" />
-          <button className="chord-swap-button" onClick={setSelectedGroup}>
+          <hr className="border-2 w-full rounded-3xl border-gray-600" />
+          <button className="chord-swap-button ml-4" onClick={setSelectedGroup}>
             Diminished Chords
           </button>
         </div>
@@ -235,7 +238,7 @@ const FindKey = () => {
       </section>
 
       {/* found key section */}
-      <section id="foundKeySection" className="w-full max-w-2xl mb-32">
+      <section id="foundKeySection" className="w-full max-w-2xl mt-8 mb-16">
         <p className="text-white mb-4">Compatible Keys</p>
         <hr className="border-gray-600 border-2 rounded-full" />
         <div id="displayCompatKeysContainer" className="mt-4 text-center">

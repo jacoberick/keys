@@ -11,6 +11,9 @@ module.exports = {
       bOne: { max: "773px" },
       bTwo: { max: "603px" },
       bThree: { max: "567px" },
+      bFour: { max: "434px" },
+      bFive: { max: "390px" },
+      bSix: { max: "330px" },
     },
     extend: {
       fontFamily: {
