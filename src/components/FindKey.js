@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 // repeated styles
 const chordSection = `max-w-2xl my-8`;
@@ -91,7 +91,7 @@ const FindKey = () => {
     setFoundKeys(potentialKeys);
   };
 
-  //updates chord group button style
+  //updates chordswap button style
   let chordSwapButtons = document.getElementsByClassName("chord-swap-button");
   [...chordSwapButtons].forEach((x) => {
     if (selectedChordGrp.indexOf(x.innerHTML) !== -1) {
@@ -100,6 +100,17 @@ const FindKey = () => {
       x.classList.remove("text-yellow-400", "italic");
     }
   });
+
+  // adds active class to chord buttons on click of chordswap category
+  useEffect(() => {
+    let buttons = document.getElementsByClassName("cb-selector");
+    [...buttons].forEach((x) => {
+      if (selectedChords.indexOf(x.innerHTML) !== -1) {
+        x.classList.remove("text-yellow-400");
+        x.classList.add("bg-yellow-400", "text-white");
+      }
+    });
+  }, [selectedChordGrp, selectedChords]);
 
   //toggles chord to be selected or removed from selected
   const toggleSelectedChord = (el) => {
