@@ -1,6 +1,19 @@
-# Getting Started with Create React App
+# Keys 
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Unlock your music with Keys! A tool to determine what key a composition is in, based off of its employed chords.
+
+## **Intro to Keys**
+
+Keys is divided in two sections.
+
+### **How to Use**
+
+This section details the basics of Keys: how to choose between chord types, pick your chords, and submit your selection. When familiar with the UI, either click 'get started', or scroll down to the tool section.
+
+
+### **The Keys Tool**
+
+The second section is the Keys tool itself. Plug in your chords and press 'Find Key'. And Voila, your compatible keys with appear in front of you. Press 'Reset' to reset your selections.
 
 ## Available Scripts
 
